@@ -16,7 +16,7 @@ The second variable is pointing to the folder in the files section extracted fro
 ## The semantic model
 Because I have no better idea, on how to share relationships andmeasures I created in the semantic table, I provide these measures as codeblock and the relationships as an image.
 ### relationships
-
+![Alt text](https://github.com/tomatminceddata/GlobalPowerBIAndFabricSummit2024/blob/main/images/semantic%20model%20relationships%202024-02-13.png)
 ### measures - hometable: globalSummit_dim_sessions
 ```
 no of sessions = 
