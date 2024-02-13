@@ -46,3 +46,6 @@ CONCATENATEX(
 ```
 no of speakers = DISTINCTCOUNT( 'globalsummit_dim_speakers'[speakerId] )
 ```
+## The report
+Current I have some issues with creating a pbit when I'm connected to a semantic model after I converted it to a local model. Until I have this fixed, I can onyl create a screenshot what I have build so far.
+![Alt text](https://github.com/tomatminceddata/GlobalPowerBIAndFabricSummit2024/blob/main/images/sampleReport%20with%20tooltippage.png)
