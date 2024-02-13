@@ -13,3 +13,9 @@ This notebook is using three variables
 + deltaTablePrefix = "globalSummit_"
 The first variable points to a variable that contains timezoneoffsets,it's expected that you manually upload the csv to the folder that defined with the variable.
 The second variable is pointing to the folder in the files section extracted from the website.
+## The semantic model
+Because I have no better idea, on how to share the measures I created in the semantic table, I provide these measures as codeblock
+```
+no of sessions = 
+DISTINCTCOUNT( 'globalsummit_dim_sessions'[sessionId] )
+```
