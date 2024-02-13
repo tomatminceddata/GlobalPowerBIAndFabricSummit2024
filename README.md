@@ -14,7 +14,9 @@ This notebook is using three variables
 The first variable points to a variable that contains timezoneoffsets,it's expected that you manually upload the csv to the folder that defined with the variable.
 The second variable is pointing to the folder in the files section extracted from the website.
 ## The semantic model
-Because I have no better idea, on how to share the measures I created in the semantic table, I provide these measures as codeblock
+Because I have no better idea, on how to share relationships andmeasures I created in the semantic table, I provide these measures as codeblock and the relationships as an image.
+### relationships
+![Alt text](https://github.com/tomatminceddata/GlobalPowerBIAndFabricSummit2024/blob/main/images/semantic%20model%20relationships%202024-02-13.png)
 ### measures - hometable: globalSummit_dim_sessions
 ```
 no of sessions = 
