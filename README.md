@@ -5,5 +5,42 @@ The data used is extracted from the Summit website (consent was given by Rezu Ra
 Currently the python code is not optimized, as I created while attending the virtual Global Power BI & Microsft Fabric Summit 2024. For this reason, it can be difficult if you have absolutely no experience using notebooks with Microsoft Fabric. I will create a separate document where I explain all the things Pythin in more detail.
 ### the notebook - globalPowerBISummit2024_getData
 This notebook extracts data from the website, and stores this data in a folder, the path to the folder is defined as a variable inside a cell_
-filePath = "Files/PowerBIAndFabricSummit/2024/"
-
++ filePath = "Files/PowerBIAndFabricSummit/2024/"
+### the notebook - globalPowerBISummit2024_transformData
+This notebook is using three variables
++ filePathTimezones = "Files/PowerBIAndFabricSummit/"
++ filePath = "Files/PowerBIAndFabricSummit/2024/"
++ deltaTablePrefix = "globalSummit_"
+The first variable points to a variable that contains timezoneoffsets,it's expected that you manually upload the csv to the folder that defined with the variable.
+The second variable is pointing to the folder in the files section extracted from the website.
+## The semantic model
+Because I have no better idea, on how to share the measures I created in the semantic table, I provide these measures as codeblock
+### measures - hometable: globalSummit_dim_sessions
+```
+no of sessions = 
+DISTINCTCOUNT( 'globalsummit_dim_sessions'[sessionId] )
+```
+```
+sessionDescription (ms) = 
+CONCATENATEX(
+    CALCULATETABLE( 
+        VALUES( 'globalsummit_dim_sessions'[description]  )
+        , TREATAS( VALUES( 'globalsummit_fact_schedule'[sessionId] ) , 'globalsummit_dim_sessions'[sessionId] )
+    )
+    , 'globalsummit_dim_sessions'[description]
+)
+```
+```
+sessionTitle (ms) = 
+CONCATENATEX(
+    CALCULATETABLE( 
+        VALUES( 'globalsummit_dim_sessions'[title]  )
+        , TREATAS( VALUES( 'globalsummit_fact_schedule'[sessionId] ) , 'globalsummit_dim_sessions'[sessionId] )
+    )
+    , 'globalsummit_dim_sessions'[title]
+)
+```
+### measures - hometable: globalSummit_dim_speakers
+```
+no of speakers = DISTINCTCOUNT( 'globalsummit_dim_speakers'[speakerId] )
+```
