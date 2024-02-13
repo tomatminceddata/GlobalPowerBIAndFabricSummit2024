@@ -15,7 +15,18 @@ The first variable points to a variable that contains timezoneoffsets,it's expec
 The second variable is pointing to the folder in the files section extracted from the website.
 ## The semantic model
 Because I have no better idea, on how to share the measures I created in the semantic table, I provide these measures as codeblock
+### measures - hometable: globalSummit_dim_sessions
 ```
 no of sessions = 
 DISTINCTCOUNT( 'globalsummit_dim_sessions'[sessionId] )
+```
+```
+sessionDescription (ms) = 
+CONCATENATEX(
+    CALCULATETABLE( 
+        VALUES( 'globalsummit_dim_sessions'[description]  )
+        , TREATAS( VALUES( 'globalsummit_fact_schedule'[sessionId] ) , 'globalsummit_dim_sessions'[sessionId] )
+    )
+    , 'globalsummit_dim_sessions'[description]
+)
 ```
