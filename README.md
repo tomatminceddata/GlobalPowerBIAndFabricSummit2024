@@ -30,3 +30,17 @@ CONCATENATEX(
     , 'globalsummit_dim_sessions'[description]
 )
 ```
+```
+sessionTitle (ms) = 
+CONCATENATEX(
+    CALCULATETABLE( 
+        VALUES( 'globalsummit_dim_sessions'[title]  )
+        , TREATAS( VALUES( 'globalsummit_fact_schedule'[sessionId] ) , 'globalsummit_dim_sessions'[sessionId] )
+    )
+    , 'globalsummit_dim_sessions'[title]
+)
+```
+### measures - hometable: globalSummit_dim_speakers
+```
+no of speakers = DISTINCTCOUNT( 'globalsummit_dim_speakers'[speakerId] )
+```
